@@ -1,12 +1,12 @@
 import './App.css'
-import CommentsComponent from "./components/CommentsComponent.tsx";
+import QuotesComponent from "./components/QuotesComponent.tsx";
 
 function App() {
 
 
   return (
       <>
-          <CommentsComponent/>
+          <QuotesComponent/>
       </>
   )
 }

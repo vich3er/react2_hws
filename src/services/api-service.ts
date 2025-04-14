@@ -1,5 +1,6 @@
-import {IComment} from "../models/IComment.ts";
 
-export const getComments =async (): Promise<IComment[]> => {
-    return await fetch("https://jsonplaceholder.typicode.com/comments").then((res) => res.json());
+import {IQuotes} from "../models/IQuotes.ts";
+
+export const getQuotes =async (): Promise<IQuotes> => {
+    return await fetch('https://dummyjson.com/quotes').then((res) => res.json());
 }
