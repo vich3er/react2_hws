@@ -19,7 +19,7 @@ export interface Meta {
   qrCode: string;
 }
 
-export interface IProduct {
+export interface Products {
   id: number;
   title: string;
   description: string;
@@ -45,7 +45,7 @@ export interface IProduct {
 }
 
 export interface IProducts {
-  products: IProduct[];
+  products: Products[];
   total: number;
   skip: number;
   limit: number;
