@@ -8,7 +8,7 @@ interface UserCompProps {
 const UserComponent = ({user}:UserCompProps) => {
 const navigate = useNavigate();
     const handleOnClick = () => {
-         navigate('carts', {state: user.id});
+         navigate(user.id + '/carts');
          scrollToTop();
     };
 
