@@ -1,15 +1,16 @@
 import {createBrowserRouter} from "react-router-dom";
-import {Layout} from "../pages/Layout.tsx";
-
-import {PostsPage} from "../pages/PostsPage.tsx";
+import {Layout} from "../components/layouts/Layout.tsx";
 import UsersPage from "../pages/UsersPage.tsx";
+import {CartsPage} from "../pages/CartsPage.tsx";
 
 
 export const routes = createBrowserRouter([
     {path: '/', element: <Layout/>,
         children: [
-            {path: "users", element: <UsersPage/>},
-            {path: "posts", element: <PostsPage/>}
+            {path: "users", element: <UsersPage/>, children:[
+                    {path: 'carts', element: <CartsPage/>}
+                ]},
+
         ]
     }
 ])
