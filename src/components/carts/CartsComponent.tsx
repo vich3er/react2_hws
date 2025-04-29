@@ -7,16 +7,21 @@ import {CartComponent} from "./CartComponent.tsx";
 
 export const CartsComponent = () => {
     const {state} = useLocation();
-    console.log(state);// чому при кліку його виводить 30 разів?
+
+    console.log(state) ;
     const [carts, setCarts] = useState<ICart[]>([]);
     useEffect(() => {
         getData<IResponse & {carts: ICart[]}>('carts/user/'+ state).then(({carts})=>setCarts(carts))
-    }, [])
+    }, [state]);
     console.log(carts);
+ console.log(   import.meta.env.VITE_BASE_URL + '/carts/user/'+ state);
     return (
         <>
-            {carts&&
+            {carts.length>0?
                 carts.map((cart) => (<CartComponent key={cart.id} cart={cart} />))
+                :
+                <p>Немає покупок</p>
+
             }
         </>
     );

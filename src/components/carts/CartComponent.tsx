@@ -8,7 +8,7 @@ export const CartComponent = ({cart}: CartProps) => {
     return (
         <div>
             <p>total: {cart.total}</p>
-            {cart.products.map((product) => <p>{product.title} {product.price}</p>)}
+            {cart.products.map((product) => <p key={product.id}>{product.title} {product.price}</p>)}
         </div>
     );
 };
