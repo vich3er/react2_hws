@@ -23,40 +23,45 @@ export const PaginationComponent: FC<PaginationComponentProps> = ({total, limit}
 
     useEffect(() => {
         if (pageNumber) {
-            console.log(currentPage == 1);
+            console.log(currentPage==1);
             if (currentPage==1) {
                 setdisabledPrev(true)
             } else {
                 setdisabledPrev(false)
             }
-            if (currentPage !== numberOfPages)
-                (setdisabledNext(false))
-            else {
-                setdisabledNext(true)
-            }
 
+           if (numberOfPages==currentPage){
+               setdisabledNext(true)
+           }
+           else {
+               setdisabledNext(false)
+           }
             console.log(currentPage == numberOfPages);
             console.log("currentPage " + currentPage);
             console.log("numberOfPages " + numberOfPages);
         }
-    }, [pageNumber]);
+
+    }, [pageNumber, total]);
 
 
     const handleClick = (s: "-" | "+") => {
 
         if (pageNumber) {
 
-
             {
                 if (s == '-') {
 
                     if (currentPage > 1) {
+
+                        // window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
                         --currentPage;
                         setQuery({page: currentPage.toString()})
                     }
                 } else if (s == '+') {
 
                     if (currentPage < numberOfPages) {
+
+                        // window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
                         ++currentPage;
                         setQuery({page: currentPage.toString()})
 
@@ -65,7 +70,7 @@ export const PaginationComponent: FC<PaginationComponentProps> = ({total, limit}
             }
 
         }
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+
 
 
     }

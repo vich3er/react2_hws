@@ -18,6 +18,8 @@ export const UsersComponent = () => {
         // тут не працюють підсказки після крапки, чому?
          setTotal(res.total);
          setUsers(res.users)
+          window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+
      })
     }, [query]);
     return (
