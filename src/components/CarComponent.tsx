@@ -7,11 +7,13 @@ interface CartCompProps {
 
 export const CarComponent:FC<CartCompProps> = ({car}) => {
     return (
-        <div className="border border-gray-200 p-5 my-5">
-            <p>{car.brand}</p>
-            <p>{car.year}</p>
-            <p>{car.price}</p>
-        </div>
+      <div id={'carItem'} className={'rounded-md p-1 my-5'}>
+          <div className="border bg-white border-gray-200 rounded-md p-2 ">
+              <p>{car.brand}</p>
+              <p>{car.year}</p>
+              <p>{car.price}</p>
+          </div>
+      </div>
     );
 };
 
