@@ -7,7 +7,7 @@ interface CartCompProps {
 
 export const CarComponent:FC<CartCompProps> = ({car}) => {
     return (
-      <div id={'carItem'} className={'rounded-md p-1 my-5'}>
+      <div id={car.id|| Math.random()} className={'rounded-md p-1 my-5'}>
           <div className="border bg-white border-gray-200 rounded-md p-2 ">
               <p>{car.brand}</p>
               <p>{car.year}</p>

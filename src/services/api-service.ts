@@ -13,10 +13,11 @@ const response = await axoisInstanse.get<ICar[]>('');
     return response.data;
 }
 
-export const addCar = async (car: ICar)=> {
+export const addCar = async (car: ICar)  : Promise<ICar> => {
     console.log('car' + car.brand + car.price + car.year);
-    const res = await axoisInstanse.post('', {...car})
+    const {data} = await axoisInstanse.post('', {...car})
+     const addedCar = data as ICar;
+    console.log(addedCar);
+    return addedCar;
 
-    console.log(res.data);
-    return res.data
 }
