@@ -1,1 +1,24 @@
 @import "tailwindcss";
+@keyframes colorFade {
+    0% {
+        border: #4f46e5 3px solid;
+    }
+    25% {
+        border: #ffffff 3px solid;
+    } 50% {
+              border: #4f46e5 3px solid;
+      }
+    75% {
+         border: #ffffff 3px solid;
+    }
+    90% {
+       border: #4f46e5 3px solid;
+    }
+    100% {
+        border: #ffffff 3px solid;
+    }
+}
+
+.color-animation {
+    animation: colorFade 3s ease-in-out ;
+}

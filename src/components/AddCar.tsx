@@ -3,6 +3,7 @@ import {addCar} from "../services/api-service.ts";
 import {ICar} from "../models/ICar.ts";
 import {carsValidator} from "../validators/cars-validator.ts";
 import {joiResolver} from "@hookform/resolvers/joi";
+import {FC} from "react";
 
 interface IFormProps {
     brand: string;
@@ -10,28 +11,19 @@ interface IFormProps {
     price: number;
 }
 
-export const AddCar = ({loadCars}: { loadCars: () => void }) => {
+
+type AddCarProps = {
+    loadCars: () => void;
+    setNewCarId: (carId: number) => void;
+}
+
+export const AddCar:FC<AddCarProps> = ({loadCars,setNewCarId} ) => {
     const inputStyle = "focus:ring-2 p-2 border border-indigo-600  outline-none mb-2  focus:ring-indigo-600  w-[100%] rounded-md "
 
     const higlightAdded = (id: number) => {
-        console.log(id);
-        const carItem = document.getElementById(id.toString());
-        console.log(carItem);
-        if (carItem) {
 
-            carItem.classList.add("bg-indigo-600/30");
-            carItem.classList.add("animate-pulse");
-            carItem.classList.add("shadow-md");
-            carItem.classList.add("shadow-indigo-500/50");
-            setTimeout(() => {
+        setNewCarId(id);
 
-                carItem.classList.remove("bg-indigo-600/30");
-                carItem.classList.remove("animate-pulse");
-                carItem.classList.remove("shadow-md");
-                carItem.classList.remove("shadow-indigo-500/50");
-
-            }, 5000)
-        }
     }
 
     const {handleSubmit, register, formState: {errors, isValid}, reset} = useForm<IFormProps>({
@@ -51,7 +43,7 @@ export const AddCar = ({loadCars}: { loadCars: () => void }) => {
             reset();
             loadCars()
              return res.id
-        }).then((id) => setTimeout(()=>{higlightAdded(id || 0)}, 500))
+        }).then((id) =>  higlightAdded(id))
 
     }
     return (
@@ -73,7 +65,7 @@ export const AddCar = ({loadCars}: { loadCars: () => void }) => {
 
                 <div className='flex justify-center'>
                     <button disabled={!isValid}
-                            className={'bg-indigo-600  text-white p-2 rounded-3xl hover:scale-x-200 duration-700'}
+                            className={'bg-indigo-600  text-white p-2 rounded-3xl hover:bg-indigo-400 duration-300'}
                             type='submit'>add
                     </button>
                 </div>

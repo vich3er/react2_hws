@@ -6,17 +6,17 @@ import {AddCar} from "../components/AddCar.tsx";
 
 const CarsPage = () => {
     const [cars, setCars] = useState<ICar[]>([]);
-
-      const loadCars =  ()=> getAllCars().then(res=> setCars(res ))
+const [newCarId, setNewCarId] = useState<number | null>();
+      const loadCars =  ()=> getAllCars().then(res=> setCars(res.reverse() ))
     useEffect(() => {
         loadCars();
     }, []);
     return (
         <div className={'flex items-center p-10 justify-around'}>
-            <AddCar loadCars = { loadCars} />
+            <AddCar loadCars = { loadCars} setNewCarId={setNewCarId} />
            <div className={'flex flex-col h-[90vh] overflow-y-scroll '}>
-               {cars&& cars.reverse().map((car, i) => (
-                   <CarComponent key={i} car={{...car}} />
+               {cars&& cars.map((car, i) => (
+                   <CarComponent key={i} car={{...car}}  higlighted={car.id == newCarId} />
                ))}
            </div>
         </div>
