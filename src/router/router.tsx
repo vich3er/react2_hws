@@ -1,5 +1,5 @@
 import {createBrowserRouter} from "react-router-dom";
-import Menu from "../components/Menu.tsx";
+import Menu from "../layouts/Menu.tsx";
 import {UsersPage} from "../pages/UsersPage.tsx";
 import {CommentsPage} from "../pages/CommentsPage.tsx";
 import {PostsPage} from "../pages/PostsPage.tsx";
